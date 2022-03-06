@@ -1,0 +1,112 @@
+.reset {
+    padding: 0;
+    margin: 0;
+}
+
+.numDire {
+    width: 100%;
+    background-color: rgb(221, 53, 90);
+    text-align: end;
+    color: white;
+    font-size: 15px;
+    font-weight: 100;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    height: 100px;
+
+}
+
+.nav-item {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.collapse {
+    justify-content: end;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 30px;
+    font-weight: bold;
+    color: #7431DD;
+    background: linear-gradient(to right, #dd31dd 20%, #7431DD 40%, #0082e6 60%, #dd31dd 80%);
+    background-size: 200% auto;
+    text-decoration: bold;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+}
+
+.titulo {
+    padding-top: 150px;
+}
+
+
+.redSocial {
+    position: fixed;
+    right: 0;
+    top: 35%;
+    font-size: 1.5 rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 100;
+}
+
+.icon {
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem;
+    display: flex;
+    transition: all 0.5s;
+
+}
+
+.icon-facebook2 {
+    background-color: #2E406E;
+}
+
+.icon-twitter {
+    background-color: #339DC5;
+}
+
+.icon-whatsapp {
+    background-color: #25D366;
+
+}
+
+.icon-instagram {
+    background-color: #3F60A5;
+
+}
+
+.header {
+    background-color: rgb(255, 255, 66);
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+    height: auto;
+}
+
+.container {
+    margin-top: 200px;
+}
+
+main {
+    background-image: url(./img/footprints-g18db99b3d_1280.png);
+}
+
+footer {
+    background-color: rgb(255, 255, 66);
+}

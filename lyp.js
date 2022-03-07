@@ -1,5 +1,3 @@
-let calzadoss=  prompt("Bienvenido a LYP CALZADOS realice su compra");
-
 class calzado {
     constructor(calzado){
     this.id = calzado.id;
@@ -19,96 +17,111 @@ class calzado {
     ultimoPrecioTotal(){
         this.precioTotal= this.precio*this.cantidad;
     }
-};
+}
 
 //Constantes y variables.
 
 const calzados =[
    {
         id:0,
-        color: plateado,
+        color:"plateado",
         precio: 1300,
         cantidad:1,
-        tipo:zapatilla,
         numero:26,
+        tipo:"zapatilla",
+        
     },
     {
         id:1,
-        color: rosaBrillo,
+        color: "rosaBrillo",
         precio: 1300,
         cantidad:1,
-        tipo:zapatilla,
         numero:23,
+        tipo:"zapatilla",
+        
     },
     {
         id:2,
-        color: negro,
+        color:"negro",
         precio: 1300,
         cantidad:1,
-        tipo:zapatilla,
         numero:21,
+        tipo:"zapatilla",
+        
+        
     },
     {
         id:3,
-        color: azul ,
+        color:"azul" ,
         precio: 1300,
         cantidad:1,
-        tipo:zapatilla,
         numero:23,
+        tipo:"zapatilla",
+        
     },
     {
         id:4,
-        color: celeste,
+        color:"celeste",
         precio: 1000,
         cantidad:1,
-        tipo:Sandalias,
         numero:23,
+        tipo: "Sandalias",
+        
     },
     {
         id:5,
-        color: amarillo,
+        color:"amarillo",
         precio: 1000,
         cantidad:1,
-        tipo:Sandalias,
         numero:24,
+        tipo:"Sandalias",
+
+       
     },
     {
         id:6,
-        color: negro,
+        color:"negro",
         precio: 1000,
         cantidad:1,
-        tipo:Sandalias,
         numero:20,
+        tipo:"Sandalias",
+        
     },
     {
         id:7,
-        color: verdeMusgo,
+        color:"verdeMusgo",
         precio: 1000,
         cantidad:1,
-        tipo:Sandalias,
         numero:23,
+        tipo:"Sandalias",
+        
     },
        
 ];
+/*PRODUCTO BUSCADO CON FIND
+ const productoBuscado = calzados.find(tipo =>tipo.id===4)
+ alert(productoBuscado)*/
+
 let carrito=[];
 let precioTotal;
+//USO DE FIND- 
 function menuCompra(){
 let idProducto = prompt(
 `Escriba el numero del producto a comprar o 'ESC' para finalizar
         0: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-         1: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-          2: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-           3: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-            4: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-             5: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-              6: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-               7: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
+         1: ${calzados[1].color}, Precio: ${calzados[1].precio}, Tipo:${calzados[1].tipo}
+          2: ${calzados[2].color}, Precio: ${calzados[2].precio}, Tipo:${calzados[2].tipo}
+           3: ${calzados[3].color}, Precio: ${calzados[3].precio}, Tipo:${calzados[3].tipo}
+            4: ${calzados[4].color}, Precio: ${calzados[4].precio}, Tipo:${calzados[4].tipo}
+             5: ${calzados[5].color}, Precio: ${calzados[5].precio}, Tipo:${calzados[5].tipo}
+              6: ${calzados[6].color}, Precio: ${calzados[6].precio}, Tipo:${calzados[6].tipo}
+               7: ${calzados[7].color}, Precio: ${calzados[7].precio}, Tipo:${calzados[7].tipo}
 `);
  while ( idProducto !== "ESC"){
         let calzadoEnCarrito = carrito.find((elemento)=>{
 if(elemento.id == idProducto){
     return true;
-}})
+}});
         if(calzadoEnCarrito){
             let index = carrito.findIndex((elemento) =>{
                 if (elemento.id === calzadoEnCarrito.id){
@@ -120,20 +133,21 @@ carrito[index].ultimoPrecioTotal();
 alert(`se ha añadido otras unidades de calzados ${carrito[index].tipo}. Cantidad: ${carrito[index].cantidad}. Color: ${carrito[index].color} `);}
 else{
     carrito.push(new calzado (calzados[idProducto]));
-    alert(`Se ha añadido al carrito el calzado ${calzados[idProduto].tipo}`)};
-idProduto = prompt(`¿Queres seguir comprando?. Escriba el número del producto que desea o escriba ESC para finalizar
+    alert(`Se ha añadido al carrito el calzado ${calzados[idProducto].tipo}`);
+}
+idProducto = prompt(`¿Queres seguir comprando?. Escriba el número del producto que desea o escriba ESC para finalizar
 0: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-         1: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-          2: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-           3: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-            4: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-             5: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-              6: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-               7: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}`);}}
+         1: ${calzados[1].color}, Precio: ${calzados[1].precio}, Tipo:${calzados[1].tipo}
+          2: ${calzados[2].color}, Precio: ${calzados[2].precio}, Tipo:${calzados[2].tipo}
+           3: ${calzados[3].color}, Precio: ${calzados[3].precio}, Tipo:${calzados[3].tipo}
+            4: ${calzados[4].color}, Precio: ${calzados[4].precio}, Tipo:${calzados[4].tipo}
+             5: ${calzados[5].color}, Precio: ${calzados[5].precio}, Tipo:${calzados[5].tipo}
+              6: ${calzados[6].color}, Precio: ${calzados[6].precio}, Tipo:${calzados[6].tipo}
+               7: ${calzados[7].color}, Precio: ${calzados[7].precio}, Tipo:${calzados[7].tipo}`);}}
                function tenerPrecioTotal(){
                    let precioTotal = 0;
                    for( const producto of carrito){
-                       precioTotal += producto*precioTotal;
+                       precioTotal += producto.precioTotal;
                    }
                    return precioTotal;
                }

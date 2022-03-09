@@ -157,3 +157,25 @@ idProducto = prompt(`¿Queres seguir comprando?. Escriba el número del producto
                let arrayOrdenadoPorPrecio = calzados.sort((a,b) =>a.precio-b.precio);
                console.log("Array ordenado por precio");
                console.table(arrayOrdenadoPorPrecio);
+
+//DESAFIO CLASE 8 DOM
+
+function imprimirCompraTotal( DOM){
+   let dom = document.getElementById("dom");
+   dom.innerHTML=`
+   <div>
+   <h2>${elemento.tipo}</h2>
+   <img src="${elemento.img}">
+   <h5>${elemento.color}</h5>
+   <p> Precio:${elemento.precio}</p>
+   `
+}
+
+function imprimirPromp(){
+    let carrito= document.querySelector("#carrito");
+    let pedidoUsuario =prompt("¿Que calzado desea comprar?");
+    let parrafo = document.createElement("p");
+    parrafo.textContent=`ELEGISTE EL CALZADO ${pedidoUsuario};
+    `
+    carrito.appendChild(parrafo);
+}

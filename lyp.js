@@ -1,12 +1,13 @@
-class calzado {
+class Calzado {
     constructor(calzado){
     this.id = calzado.id;
     this.color = calzado.color;
     this.precio = calzado.precio;
-    this.cantidad = 1;
+    this.cantidad = cantidad;
     this.numero = calzado.numero;
+    this.tipo= calzado.tipo
     this.precioTotal= calzado.precio;
-    this.tipo= calzado.tipo}
+    }
 
     agregarProducto(){
         this.cantidad++;
@@ -15,7 +16,7 @@ class calzado {
         this.cantidad--;
     }
     ultimoPrecioTotal(){
-        this.precioTotal= this.precio*this.cantidad;
+        this.precioTotal= this.precio * this.cantidad;
     }
 }
 
@@ -29,6 +30,7 @@ const calzados =[
         cantidad:1,
         numero:26,
         tipo:"zapatilla",
+        img:"./img/PhotoRoom-20220218_095456.png"
         
     },
     {
@@ -38,6 +40,7 @@ const calzados =[
         cantidad:1,
         numero:23,
         tipo:"zapatilla",
+        img:"./img/PhotoRoom-20220218_095426.png"
         
     },
     {
@@ -47,6 +50,7 @@ const calzados =[
         cantidad:1,
         numero:21,
         tipo:"zapatilla",
+        img:"./img/PhotoRoom-20220218_095357.png"
         
         
     },
@@ -57,6 +61,7 @@ const calzados =[
         cantidad:1,
         numero:23,
         tipo:"zapatilla",
+        img:"./img/PhotoRoom-20220218_095319.png"
         
     },
     {
@@ -66,6 +71,7 @@ const calzados =[
         cantidad:1,
         numero:23,
         tipo: "Sandalias",
+        img:"./img/PhotoRoom-20211206_145756_(1).png"
         
     },
     {
@@ -75,6 +81,7 @@ const calzados =[
         cantidad:1,
         numero:24,
         tipo:"Sandalias",
+        img:"./img/PhotoRoom-20211206_145835_(1).png"
 
        
     },
@@ -85,6 +92,7 @@ const calzados =[
         cantidad:1,
         numero:20,
         tipo:"Sandalias",
+        img:"./img/PhotoRoom-20211206_145937_(2).png"
         
     },
     {
@@ -94,15 +102,178 @@ const calzados =[
         cantidad:1,
         numero:23,
         tipo:"Sandalias",
-        
+        img:"./img/PhotoRoom-20211206_150353_(1).png"
     },
        
 ];
+
+let carrito =[];
+
+//Funciones
+
+function imprimirProductosHTML(calzados){
+    let containerComprarItems = document.getElementById("container-comprar--items");
+    for( const calzado of calzados){
+        let card = document.createElement("div");
+        card.innerHTML=` <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card bg-warning text-light bg-gradient" style="width: 18rem;">
+                        <img src="${calzado.img}" id="" class="card-img-top" width="170px" height="250"
+                            alt="calzados1">
+                        <div class="card-body">
+                            <h5 class="card-title"> ${calzado.tipo} </h5>
+                            <p class="card-text">${calzado.precio}</p>
+                            <button id="Comprar${calzado.id}" type="button" onclick=""
+                            class=" btn btn-danger">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>`
+    
+containerComprarItems.appendChild(card);
+
+let boton = document.getElementById( `Comprar${calzado.id}`);
+boton.onclick= () => agregarAlcarrito(calzado.id);
+
+}
+}
+
+function agregarAlcarrito (idProducto){
+    let calzadoEnCarrito = carrito.find((elemento) => elemento.id == idProducto);
+
+    if(calzadoEnCarrito){
+        let indice = carrito.findIndex((elemento) => elemento.id == calzadoEnCarrito.id)
+
+        carrito[indice].agregarProducto();
+        carrito[indice].ultimoPrecioTotal();   
+    }
+    else{
+        carrito.push(new Calzado [idProducto]);
+    }
+    descripcionTabla(carrito);
+}
+
+function eliminarDeCarrito(id){
+    let calzado = carrito.find((calzado) => calzado.id ===id);
+    
+    let indice = carrito.findIndex((element) => {
+        if (element.id === calzado.id){
+            return true;
+        }
+    });
+
+    if (calzado.cantidad >1){
+        console.log(`cantidad disponible:${calzado.cantidad}`);
+     
+        carrito[indice].quitarProducto();
+        carrito[indice].ultimoPrecioTotal();
+
+    } else{
+        carrito.splice(indice,1);
+
+        if(carrito.length === 0){
+            carrito= [];
+        }
+    }
+}
+
+
+
+
+//FUNCION QUE RECIBE COMPRA Y LO IMPRIME EN HTML EN TABLA
+
+function descripcionTabla (array){
+    let containe = document.getElementById("ListaTablaCarrito");
+    containe.innerHTML="";
+
+    let precioTotal = obtenerPrecioTotal(array);
+    
+    let listaTable = document.createElement("div");
+
+    listaTable.innerHTML = `<table id="tablaCarrito" class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio </th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody id="bodyTabla">
+                <tr>
+                    <td>Total: $${precioTotal}</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            <tr> 
+                <td> <button id="vaciarCarrito" class="btn btn-dark"> Vaciar Carrito </button> </td>
+            </tr>
+            </tbody>
+        </table>
+    `; 
+
+
+
+let vaciar = document.getElementById("vaciarCarrito");
+
+containe.appendChild(listaTable);
+
+let bodyTabla = document.getElementById("bodyTabla");
+
+for (let calzado of array){
+    let item = document.createElement("div");
+    item.innerHTML=`
+                <tr>
+                <th scope="row">1</th>
+                    <td>${calzado.tipo}</td>
+                    <td>${calzado.cantidad}</td>
+                    <td>${calzado.color}</td>
+                    <td>${calzado.precio}</td>
+                    <td> <button id="eliminar${calzado.id}" type="button" class="btn btn-darger"> Vaciar Carrito </button> </td>
+                </tr>`;
+
+                bodyTabla.appendChild(item);
+
+                let eliminarDeCarrito = document.getElementById(`eliminar${calzado.id}`)
+                eliminarDeCarrito.addEventListener("click", ()=>{
+                    eliminarDeCarrito(calzado.id)
+                });
+
+
+}
+}
+
+escripcionTabla(carrito);
+function BorrarCarrito(){
+    carrito=[]
+};
+let imprimirTabla = BorrarCarrito;
+
+
+function obtenerPrecioTotal(array) {
+  let precioTotal = 0;
+
+  for (const producto of array) {
+    precioTotal += producto.precioTotal;
+  }
+
+  return precioTotal;
+}
+
+imprimirProductosHTML(calzados);
+
+
+
+
+
+
+
 /*PRODUCTO BUSCADO CON FIND
  const productoBuscado = calzados.find(tipo =>tipo.id===4)
  alert(productoBuscado)*/
 
-let carrito=[];
+/*let carrito=[];
 let precioTotal;
 //USO DE FIND- 
 function menuCompra(){
@@ -178,4 +349,4 @@ function imprimirPromp(){
     parrafo.textContent=`ELEGISTE EL CALZADO ${pedidoUsuario};
     `
     carrito.appendChild(parrafo);
-}
+}*/

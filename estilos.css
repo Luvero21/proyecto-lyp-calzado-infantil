@@ -30,7 +30,45 @@
 .collapse {
     justify-content: end;
 }
+.comprar{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height:30px;
+    background:rgb(221, 53, 90);
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 5px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
 
+}
+.span{
+    position: relative;
+    z-index: 2;
+    transition: .3s ease all;
+}
+.comprar::after{
+    content: "";
+    width: 100%;
+    height: 30px;
+    background: #7431DD;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: calc(-100% - 88px);
+    border-bottom: 90px solid rgb(221, 53, 90);
+    border-right: 90px solid transparent;
+}
+.comprar:hover::after{
+    left: 0;
+}
 
 h1 {
     text-align: center;
@@ -109,4 +147,44 @@ main {
 
 footer {
     background-color: rgb(255, 255, 66);
+}
+.text-img{
+    font-family:'Anton', sans-serif ;
+    color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 80px;
+    font-weight: bold;
+    background-image: url(./img/sugar-g0e39a860f_640.jpg);
+    background-size: cover;
+    background-position-y: center;
+    -webkit-background-clip: text;
+    padding-top: 150px;
+    
+}
+
+.text-im{
+    font-family:'Anton',
+    sans-serif;
+    color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: bold;
+    background-image: url(./img/sugar-g0e39a860f_640.jpg);
+    background-size: cover;
+    background-position-y: center;
+    -webkit-background-clip: text;
+    margin-top: 60px;
+}
+.div.imag{
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+
+}
+.img-bebe{
+    height: 300;
+    width: 350;
 }

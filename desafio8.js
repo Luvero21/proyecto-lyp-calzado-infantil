@@ -1,4 +1,4 @@
-//AGREGUE ATRIBUTOS A href MENU
+/*//AGREGUE ATRIBUTOS A href MENU
 const $linkDOM = document.querySelector(".link-dom");
 
 $linkDOM.setAttribute("target","_black");
@@ -12,4 +12,4 @@ parrafo.innerHTML="<h2>SUPER CALZADOS LYP , COMPRA SEGURO</h2>";
 
 document.body.append(parrafo);
 
-
+*/

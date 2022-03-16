@@ -3,7 +3,7 @@ class Calzado {
     this.id = calzado.id;
     this.color = calzado.color;
     this.precio = calzado.precio;
-    this.cantidad = cantidad;
+    this.cantidad = 1;
     this.numero = calzado.numero;
     this.tipo= calzado.tipo
     this.precioTotal= calzado.precio;
@@ -137,7 +137,7 @@ boton.onclick= () => agregarAlcarrito(calzado.id);
 }
 }
 
-function agregarAlcarrito (idProducto){
+function agregarAlcarrito (idProducto) {
     let calzadoEnCarrito = carrito.find((elemento) => elemento.id == idProducto);
 
     if(calzadoEnCarrito){
@@ -147,13 +147,13 @@ function agregarAlcarrito (idProducto){
         carrito[indice].ultimoPrecioTotal();   
     }
     else{
-        carrito.push(new Calzado [idProducto]);
+        carrito.push(new Calzado(calzados[idProducto]));
     }
     descripcionTabla(carrito);
 }
 
 function eliminarDeCarrito(id){
-    let calzado = carrito.find((calzado) => calzado.id ===id);
+    let calzado = carrito.find((calzado) => calzado.id === id);
     
     let indice = carrito.findIndex((element) => {
         if (element.id === calzado.id){
@@ -174,6 +174,7 @@ function eliminarDeCarrito(id){
             carrito= [];
         }
     }
+    descripcionTabla(carrito);
 }
 
 
@@ -192,9 +193,10 @@ function descripcionTabla (array){
     listaTable.innerHTML = `<table id="tablaCarrito" class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                
                     <th scope="col">Descripcion</th>
                     <th scope="col">Cantidad</th>
+                    <th scope="col">Color</th>
                     <th scope="col">Precio </th>
                     <th scope="col">Accion</th>
                 </tr>
@@ -207,17 +209,16 @@ function descripcionTabla (array){
                     <td> </td>
                 </tr>
             <tr> 
-                <td> <button id="vaciarCarrito" class="btn btn-dark"> Vaciar Carrito </button> </td>
+                <td> <button id="vaciarCarrito" class="btn btn-danger "> Vaciar Carrito </button> </td>
             </tr>
             </tbody>
         </table>
     `; 
 
-
-
-let vaciar = document.getElementById("vaciarCarrito");
-
 containe.appendChild(listaTable);
+
+let botonVaciar = document.getElementById("vaciarCarrito");
+botonVaciar.addEventListener( "click" , borrarCarrito);
 
 let bodyTabla = document.getElementById("bodyTabla");
 
@@ -225,30 +226,30 @@ for (let calzado of array){
     let item = document.createElement("div");
     item.innerHTML=`
                 <tr>
-                <th scope="row">1</th>
+                <th scope="row"></th>
                     <td>${calzado.tipo}</td>
                     <td>${calzado.cantidad}</td>
                     <td>${calzado.color}</td>
                     <td>${calzado.precio}</td>
-                    <td> <button id="eliminar${calzado.id}" type="button" class="btn btn-darger"> Vaciar Carrito </button> </td>
+                    <td> <button id="eliminar${calzado.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>
                 </tr>`;
 
                 bodyTabla.appendChild(item);
 
-                let eliminarDeCarrito = document.getElementById(`eliminar${calzado.id}`)
-                eliminarDeCarrito.addEventListener("click", ()=>{
-                    eliminarDeCarrito(calzado.id)
+                let borrarItem = document.getElementById(`eliminar${calzado.id}`);
+                borrarItem.addEventListener("click", ()=>{
+                    eliminarDeCarrito(calzado.id);
                 });
 
 
 }
 }
 
-escripcionTabla(carrito);
-function BorrarCarrito(){
-    carrito=[]
-};
-let imprimirTabla = BorrarCarrito;
+function borrarCarrito(){
+    carrito = [];
+descripcionTabla(carrito);
+
+}
 
 
 function obtenerPrecioTotal(array) {
@@ -269,84 +270,3 @@ imprimirProductosHTML(calzados);
 
 
 
-/*PRODUCTO BUSCADO CON FIND
- const productoBuscado = calzados.find(tipo =>tipo.id===4)
- alert(productoBuscado)*/
-
-/*let carrito=[];
-let precioTotal;
-//USO DE FIND- 
-function menuCompra(){
-let idProducto = prompt(
-`Escriba el numero del producto a comprar o 'ESC' para finalizar
-        0: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-         1: ${calzados[1].color}, Precio: ${calzados[1].precio}, Tipo:${calzados[1].tipo}
-          2: ${calzados[2].color}, Precio: ${calzados[2].precio}, Tipo:${calzados[2].tipo}
-           3: ${calzados[3].color}, Precio: ${calzados[3].precio}, Tipo:${calzados[3].tipo}
-            4: ${calzados[4].color}, Precio: ${calzados[4].precio}, Tipo:${calzados[4].tipo}
-             5: ${calzados[5].color}, Precio: ${calzados[5].precio}, Tipo:${calzados[5].tipo}
-              6: ${calzados[6].color}, Precio: ${calzados[6].precio}, Tipo:${calzados[6].tipo}
-               7: ${calzados[7].color}, Precio: ${calzados[7].precio}, Tipo:${calzados[7].tipo}
-`);
- while ( idProducto !== "ESC"){
-        let calzadoEnCarrito = carrito.find((elemento)=>{
-if(elemento.id == idProducto){
-    return true;
-}});
-        if(calzadoEnCarrito){
-            let index = carrito.findIndex((elemento) =>{
-                if (elemento.id === calzadoEnCarrito.id){
-                    return true;
-                }
-            });
-carrito[index].agregarProducto();
-carrito[index].ultimoPrecioTotal();
-alert(`se ha añadido otras unidades de calzados ${carrito[index].tipo}. Cantidad: ${carrito[index].cantidad}. Color: ${carrito[index].color} `);}
-else{
-    carrito.push(new calzado (calzados[idProducto]));
-    alert(`Se ha añadido al carrito el calzado ${calzados[idProducto].tipo}`);
-}
-idProducto = prompt(`¿Queres seguir comprando?. Escriba el número del producto que desea o escriba ESC para finalizar
-0: ${calzados[0].color}, Precio: ${calzados[0].precio}, Tipo:${calzados[0].tipo}
-         1: ${calzados[1].color}, Precio: ${calzados[1].precio}, Tipo:${calzados[1].tipo}
-          2: ${calzados[2].color}, Precio: ${calzados[2].precio}, Tipo:${calzados[2].tipo}
-           3: ${calzados[3].color}, Precio: ${calzados[3].precio}, Tipo:${calzados[3].tipo}
-            4: ${calzados[4].color}, Precio: ${calzados[4].precio}, Tipo:${calzados[4].tipo}
-             5: ${calzados[5].color}, Precio: ${calzados[5].precio}, Tipo:${calzados[5].tipo}
-              6: ${calzados[6].color}, Precio: ${calzados[6].precio}, Tipo:${calzados[6].tipo}
-               7: ${calzados[7].color}, Precio: ${calzados[7].precio}, Tipo:${calzados[7].tipo}`);}}
-               function tenerPrecioTotal(){
-                   let precioTotal = 0;
-                   for( const producto of carrito){
-                       precioTotal += producto.precioTotal;
-                   }
-                   return precioTotal;
-               }
-               menuCompra();
-               precioTotal = tenerPrecioTotal();
-               alert(`el precio de total de tu compra es de ${precioTotal} Gracias por tu compra!`);
-               let arrayOrdenadoPorPrecio = calzados.sort((a,b) =>a.precio-b.precio);
-               console.log("Array ordenado por precio");
-               console.table(arrayOrdenadoPorPrecio);
-
-//DESAFIO CLASE 8 DOM
-
-function imprimirCompraTotal( DOM){
-   let dom = document.getElementById("dom");
-   dom.innerHTML=`
-   <div>
-   <h2>${elemento.tipo}</h2>
-   <img src="${elemento.img}">
-   <h5>${elemento.color}</h5>
-   <p> Precio:${elemento.precio}</p>
-   `
-}
-
-function imprimirPromp(){
-    let carrito= document.querySelector("#carrito");
-    let pedidoUsuario =prompt("¿Que calzado desea comprar?");
-    let parrafo = document.createElement("p");
-    parrafo.textContent=`ELEGISTE EL CALZADO ${pedidoUsuario};
-    `
-    carrito.appendChild(parrafo);
-}*/

@@ -123,7 +123,7 @@ function imprimirProductosHTML(calzados){
                             alt="calzados1">
                         <div class="card-body">
                             <h5 class="card-title"> ${calzado.tipo} </h5>
-                            <p class="card-text">${calzado.precio}</p>
+                            <p class="card-text">$${calzado.precio}</p>
                             <button id="Comprar${calzado.id}" type="button" onclick=""
                             class="comprar">COMPRAR</button>
                         </div>
@@ -192,9 +192,6 @@ function eliminarDeCarrito(id){
     } else{
         carrito.splice(indice,1);
 
-        if(carrito.length === 0){
-            carrito= [];
-        }
     }
     localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
     descripcionTabla(carrito);
@@ -238,7 +235,7 @@ function descripcionTabla (array){
         </table>
     `; 
 
-containe.appendChild(listaTable);
+ containe.appendChild(listaTable);
 
 let botonVaciar = document.getElementById("vaciarCarrito");
 botonVaciar.addEventListener( "click" , borrarCarrito);
@@ -285,6 +282,14 @@ function obtenerPrecioTotal(array) {
 
   return precioTotal;
 }
+
+function cargarEventLis (){ document.addEventListener ('DOMContentLoaded', () =>{
+    carrito= JSON.parse(localStorage.getItem('carrito')) || [] ;
+   descripcionTabla();
+
+} )
+}
+
 
 imprimirProductosHTML(calzados);
 carrito= chequearCarritoStorage();

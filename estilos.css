@@ -188,3 +188,15 @@ footer {
     height: 300;
     width: 350;
 }
+.contenedorCalzado{
+    margin-top: 30px;
+    display:inline-block;
+    align-items:center;
+    text-align: center;
+    padding: 20px;
+    
+}
+.descripcion{
+    margin-top: 40px;
+
+}

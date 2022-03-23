@@ -1,13 +1,13 @@
-class Calzado {
-    constructor(calzado){
-    this.id = calzado.id;
-    this.color = calzado.color;
-    this.precio = calzado.precio;
+class Calzado2 {
+    constructor(calzado2){
+    this.id = calzado2.id;
+    this.color = calzado2.color;
+    this.precio = calzado2.precio;
     this.cantidad = 1;
-    this.numero = calzado.numero;
-    this.tipo= calzado.tipo;
-    this.precioTotal= calzado.precio;
-    this.img = calzado.img;
+    this.numero = calzado2.numero;
+    this.tipo= calzado2.tipo;
+    this.precioTotal= calzado2.precio;
+    this.img = calzado2.img;
     }
 
     agregarProducto(){
@@ -108,31 +108,48 @@ const calzados =[
        
 ];
 
+//CON SPREAD OPERATOR AGREGO UN NUEVO PRODUCTO A MI ARRAY DE OBJETOS CALZADOS
+
+const Panchita = {id:8, color:"Azul",precio:1300,cantidad:1,numero:22,tipo:"panchitas",img:"./img/panchitaazulraya.jpg"
+
+};
+const calzados2=[
+    ...calzados,Panchita];
+
+    //console.log(calzados2);
+
+
+
+//DESESTRUCTURACION
+const {id, color, precio, cantidad, numero, tipo, img} =calzados2;
+
+
+
 let carrito =[];
 
 //Funciones
 
-function imprimirProductosHTML(calzados){
+function imprimirProductosHTML(calzados2){
     let containerComprarItems = document.getElementById("container-comprar--items");
-    for( const calzado of calzados){
+    for( const calzado2 of calzados2){
         let card = document.createElement("div");
         card.innerHTML=`
                
                     <div class="card bg-warning text-light bg-gradient" style="width: 18rem;">
-                        <img src="${calzado.img}" id="" class="card-img-top" width="170px" height="250"
+                        <img src="${calzado2.img}" id="" class="card-img-top" width="170px" height="250"
                             alt="calzados1">
                         <div class="card-body">
-                            <h5 class="card-title"> ${calzado.tipo} </h5>
-                            <p class="card-text">$${calzado.precio}</p>
-                            <button id="Comprar${calzado.id}" type="button" onclick=""
+                            <h5 class="card-title"> ${calzado2.tipo} </h5>
+                            <p class="card-text">$${calzado2.precio}</p>
+                            <button id="Comprar${calzado2.id}" type="button" onclick=""
                             class="comprar">COMPRAR</button>
                         </div>
                 </div>`
     
 containerComprarItems.appendChild(card);
 
-let boton = document.getElementById( `Comprar${calzado.id}`);
-boton.onclick= () => agregarAlcarrito(calzado.id);
+let boton = document.getElementById( `Comprar${calzado2.id}`);
+boton.onclick= () => agregarAlcarrito(calzado2.id);
 
 }
 }
@@ -146,11 +163,11 @@ function chequearCarritoStorage (){
     if(contenidoEnStorage){
         let array=[];
         for(let i = 0 ; i < contenidoEnStorage.length; i++ ) {
-            let calzado = new Calzado(
+            let calzado2 = new Calzado2(
                 contenidoEnStorage[i],
                 contenidoEnStorage[i].cantidad);
-                calzado.ultimoPrecioTotal();
-                array.push(calzado);
+                calzado2.ultimoPrecioTotal();
+                array.push(calzado2);
 
         }
 return array;
@@ -168,23 +185,27 @@ function agregarAlcarrito (idProducto) {
         carrito[indice].ultimoPrecioTotal();   
     }
     else{
-        carrito.push(new Calzado(calzados[idProducto]));
+        carrito.push(new Calzado2(calzados2[idProducto]));
     }
     localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
     descripcionTabla(carrito);
 }
 
 function eliminarDeCarrito(id){
-    let calzado = carrito.find((calzado) => calzado.id === id);
+    let calzado2 = carrito.find((calzado2) => calzado2.id === id);
     
     let indice = carrito.findIndex((element) => {
-        if (element.id === calzado.id){
-            return true;
-        }
+        //if (element.id === calzado.id){
+         //   return true;
+
+         //AGREGUE OPERADOR TERNARIO.
+        let indice = element.id === calzado2.id ? true : false ;
+            
+        
     });
 
-    if (calzado.cantidad >1){
-        console.log(`cantidad disponible:${calzado.cantidad}`);
+    if (calzado2.cantidad >1){
+        console.log(`cantidad disponible:${calzado2.cantidad}`);
      
         carrito[indice].quitarProducto();
         carrito[indice].ultimoPrecioTotal();
@@ -222,10 +243,10 @@ function descripcionTabla (array){
                 </tr>
             </thead>
             <tbody id="bodyTabla">
+        
             </tbody>
-                
             <tr> 
-                <td> <button id="vaciarCarrito" class="btn btn-danger"> Vaciar Carrito </button> </td>
+            <td> <button id="vaciarCarrito" class="btn btn-danger"> Vaciar Carrito </button> </td>
             </tr>
             <tr>
             <td class="text-end fs-3 fw-bold">Total: $${precioTotal}</td>
@@ -234,6 +255,7 @@ function descripcionTabla (array){
             
         </table>
     `; 
+    
 
  containe.appendChild(listaTable);
 
@@ -242,24 +264,22 @@ botonVaciar.addEventListener( "click" , borrarCarrito);
 
 let bodyTabla = document.getElementById("bodyTabla");
 
-for (let calzado of array){
+for (let calzado2 of array){
     let item = document.createElement("div");
     item.innerHTML=`
-                <td class="imag">
-                <img src="${calzado.img}" width="100">
-                </td>
-
-                    <td class"tipo">${calzado.tipo}</td>
-                    <td class"cant">${calzado.cantidad}</td>
-                    <t class="color">${calzado.color}</td>
-                    <td class="precio">${calzado.precio}</td>
-                    <td class="elim"> <button id="eliminar${calzado.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>`;
-
+                <tr>
+                <td class="imag "><img src="${calzado2.img}" width="100"></td>
+                <td class"tipo">${calzado2.tipo}</td>
+                <td class"cant">${calzado2.cantidad}</td>
+                <td class="color">${calzado2.color}</td>
+                <td class="precio">$${calzado2.precio}</td>
+                <td class="elim"> <button id="eliminar${calzado2.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>
+                </tr>`;
                 bodyTabla.appendChild(item);
 
-                let borrarItem = document.getElementById(`eliminar${calzado.id}`);
+                let borrarItem = document.getElementById(`eliminar${calzado2.id}`);
                 borrarItem.addEventListener("click", ()=>{
-                    eliminarDeCarrito(calzado.id);
+                    eliminarDeCarrito(calzado2.id);
                 });
 
 
@@ -284,14 +304,14 @@ function obtenerPrecioTotal(array) {
 }
 
 function cargarEventLis (){ document.addEventListener ('DOMContentLoaded', () =>{
-    carrito= JSON.parse(localStorage.getItem('carrito')) || [] ;
+    carrito= JSON.parse(localStorage.getItem('carrito')) || [] ; // USO DE OPERADOR LOGICO OR
    descripcionTabla();
 
 } )
 }
 
 
-imprimirProductosHTML(calzados);
+imprimirProductosHTML(calzados2);
 carrito= chequearCarritoStorage();
 
 

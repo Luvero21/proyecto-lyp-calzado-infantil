@@ -73,14 +73,37 @@
                 <h1 class="text-img">CALZADOS INFANTIL LYP</h1>
             </div>
         </div>
-        <div class="container-fluid ">
-            <div class="row">
-                <div class="contenedorCalzado col col-lg-3 col-md-6 col-sm-12 " id="container-comprar--items">
+        <div class="container-fluid contenedorCalzado" id="container-comprar--items">
 
-                </div>
-            </div>
         </div>
         <div id="ListaTablaCarrito" class="descripcion">
+            <table id="tablaCarrito" class="table">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Color</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyTabla">
+                    <tr>
+                        <td><img src="${calzado.img}" width="100"></td>
+                        <td>${calzado.tipo}</td>
+                        <td>${calzado.cantidad}</td>
+                        <td>${calzado.color}</td>
+                        <td>${calzado.precio}</td>
+                        <td><button id="eliminar${calzado.id}" type="button" class="btn btn-darger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end fs-3 fw-bold">Total: $${precioTotal}</td>
+                    </tr>
+
+                </tbody>
+            </table>
 
         </div>
 

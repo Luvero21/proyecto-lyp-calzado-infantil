@@ -190,13 +190,42 @@ footer {
 }
 .contenedorCalzado{
     margin-top: 30px;
-    display:inline-block;
-    align-items:center;
+     align-items:center;
     text-align: center;
     padding: 20px;
-    
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+.card{
+   margin: 10px;
 }
 .descripcion{
     margin-top: 40px;
 
 }
+th, td{
+    padding: 20 px;
+    width: auto;
+    border: solid 1px black;
+}
+#text{
+    width: 100%;
+}
+.table{
+    border: 1px, solid;
+    padding: 10px;
+    background-color:white;
+    text-align: left;
+    width: 100%;
+
+}
+thead{
+    background-color:rgb(221, 53, 90);
+    color: white;
+    border-bottom: 5px gray;
+    width: auto;
+
+}
+

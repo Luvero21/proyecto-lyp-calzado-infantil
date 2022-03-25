@@ -158,7 +158,8 @@ boton.onclick= () => agregarAlcarrito(calzado2.id);
 
 function chequearCarritoStorage (){
     let contenidoEnStorage= JSON.parse(localStorage.getItem("carritoEnStorage"));
-    console.log("contenido en chequear Carrito en ls", contenidoEnStorage);
+  //  console.log("contenido en chequear Carrito en ls", contenidoEnStorage);
+
 
     if(contenidoEnStorage){
         let array=[];
@@ -170,7 +171,7 @@ function chequearCarritoStorage (){
                 array.push(calzado2);
 
         }
-return array;
+    return array;
     }
     return[];
 }
@@ -214,8 +215,9 @@ function eliminarDeCarrito(id){
         carrito.splice(indice,1);
 
     }
-    localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
+    
     descripcionTabla(carrito);
+    localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
 }
 
 
@@ -281,8 +283,6 @@ for (let calzado2 of array){
                 borrarItem.addEventListener("click", ()=>{
                     eliminarDeCarrito(calzado2.id);
                 });
-
-
 }
 }
 
@@ -301,18 +301,21 @@ function obtenerPrecioTotal(array) {
   }
 
   return precioTotal;
-}
-
-function cargarEventLis (){ document.addEventListener ('DOMContentLoaded', () =>{
+ }
+ //Contenido cargado en local Storage
+ function cargarEventLis (){ document.addEventListener ('DOMContentLoaded', () =>{
     carrito= JSON.parse(localStorage.getItem('carrito')) || [] ; // USO DE OPERADOR LOGICO OR
-   descripcionTabla();
-
-} )
+  descripcionTabla(carrito);
+  
+} );
 }
-
 
 imprimirProductosHTML(calzados2);
 carrito= chequearCarritoStorage();
+descripcionTabla(carrito);
+
+
+
 
 
 

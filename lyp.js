@@ -27,7 +27,7 @@ const calzados =[
    {
         id:0,
         color:"plateado",
-        precio: 1300,
+        precio: 1500,
         cantidad:1,
         numero:26,
         tipo:"zapatilla",
@@ -37,7 +37,7 @@ const calzados =[
     {
         id:1,
         color: "rosaBrillo",
-        precio: 1300,
+        precio: 1500,
         cantidad:1,
         numero:23,
         tipo:"zapatilla",
@@ -47,7 +47,7 @@ const calzados =[
     {
         id:2,
         color:"negro",
-        precio: 1300,
+        precio: 1500,
         cantidad:1,
         numero:21,
         tipo:"zapatilla",
@@ -58,7 +58,7 @@ const calzados =[
     {
         id:3,
         color:"azul" ,
-        precio: 1300,
+        precio: 1500,
         cantidad:1,
         numero:23,
         tipo:"zapatilla",
@@ -68,7 +68,7 @@ const calzados =[
     {
         id:4,
         color:"celeste",
-        precio: 1000,
+        precio: 1300,
         cantidad:1,
         numero:23,
         tipo: "Sandalias",
@@ -134,7 +134,7 @@ function imprimirProductosHTML(calzados2){
     for( const calzado2 of calzados2){
         let card = document.createElement("div");
         card.innerHTML=`
-               
+        
                     <div class="card bg-warning text-light bg-gradient" style="width: 18rem;">
                         <img src="${calzado2.img}" id="" class="card-img-top" width="170px" height="250"
                             alt="calzados1">
@@ -227,7 +227,7 @@ function eliminarDeCarrito(id){
 
 function descripcionTabla (array){
     let containe = document.getElementById("ListaTablaCarrito");
-    containe.innerHTML="";
+    containe.innerHTML= "";
 
     let precioTotal = obtenerPrecioTotal(array);
     
@@ -236,12 +236,12 @@ function descripcionTabla (array){
     listaTable.innerHTML = `<table id="tablaCarrito" class="table">
             <thead>
                 <tr>
-                    <th>Imagen</th>
-                    <th>Descripcion</th>
-                    <th>Cantidad</th>
-                    <th>Color</th>
-                    <th>Precio </th>
-                    <th>Accion</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Precio </th>
+                    <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody id="bodyTabla">
@@ -251,12 +251,9 @@ function descripcionTabla (array){
             <td> <button id="vaciarCarrito" class="btn btn-danger"> Vaciar Carrito </button> </td>
             </tr>
             <tr>
-            <td class="text-end fs-3 fw-bold">Total: $${precioTotal}</td>
-            </tr>
-
-            
-        </table>
-    `; 
+            <td class="text-center fs-3 fw-bold text-danger ">Total: $${precioTotal}</td>
+            </tr>    
+        </table>`; 
     
 
  containe.appendChild(listaTable);
@@ -267,10 +264,10 @@ botonVaciar.addEventListener( "click" , borrarCarrito);
 let bodyTabla = document.getElementById("bodyTabla");
 
 for (let calzado2 of array){
-    let item = document.createElement("div");
+    let item = document.createElement("tr");
     item.innerHTML=`
                 <tr>
-                <td class="imag "><img src="${calzado2.img}" width="100"></td>
+                <tr class="imag "><img src="${calzado2.img}" width="100"></td>
                 <td class"tipo">${calzado2.tipo}</td>
                 <td class"cant">${calzado2.cantidad}</td>
                 <td class="color">${calzado2.color}</td>
@@ -278,6 +275,7 @@ for (let calzado2 of array){
                 <td class="elim"> <button id="eliminar${calzado2.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>
                 </tr>`;
                 bodyTabla.appendChild(item);
+                bodyTabla.classList.add( 'text-center','text-danger','fs-5');
 
                 let borrarItem = document.getElementById(`eliminar${calzado2.id}`);
                 borrarItem.addEventListener("click", ()=>{
@@ -309,6 +307,12 @@ function obtenerPrecioTotal(array) {
   
 } );
 }
+
+const navbar = document.querySelectorAll('.nav-link');
+for (const nav of navbar) {
+    console.log('que pasa')
+  }
+
 
 imprimirProductosHTML(calzados2);
 carrito= chequearCarritoStorage();

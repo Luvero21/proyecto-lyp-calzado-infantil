@@ -1,15 +1,9 @@
-Swal.fire({html: '<b class="orange">Bienvenido a Calzado infantil LYP </b>',
- background:'#EACD2E',
- width:'50%',
- padding:'2rem',
- allowOutsideClick:'true',
-  });
 
- const btnn = document.querySelectorAll('.comprar');
+const btnn = document.querySelectorAll('.comprar');
 
  btnn.forEach(comprar=>{
    comprar.addEventListener('click',() =>{
-     Swal.fire({ title:"Elegiste Calzados LYP",background:'#EACD2E', text:" Gracias por tu compra",})
+     Swal.fire({ title:"Elegiste Calzados LYP",background:'#EACD2E', text:" Gracias por tu preferirnos",})
    })
  });
 
@@ -21,3 +15,10 @@ Swal.fire({html: '<b class="orange">Bienvenido a Calzado infantil LYP </b>',
     })
   });
   
+  const BTNN = document.querySelectorAll('.comprarr');
+
+ BTNN.forEach(comprarr=>{
+   comprarr.addEventListener('click',() =>{
+     Swal.fire({ title:"ELIGE UN CALZADO INFANTIL",background:'#EACD2E',})
+   })
+ });

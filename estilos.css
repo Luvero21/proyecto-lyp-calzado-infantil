@@ -150,7 +150,7 @@ main {
 }
 h2{
     margin:auto;
-    
+
 }
 .contenedorCalzado{
     margin-top: 30px;
@@ -162,6 +162,7 @@ h2{
 }
 .card{
    margin: 10px;
+
 }
 
 th, td{
@@ -348,6 +349,7 @@ footer {
         background-color:rgb(221, 53, 90) ;
         font-weight: bold;
         font-size: 1.3em;
+        color: aliceblue;
     }
     tbody td{
         display: block;

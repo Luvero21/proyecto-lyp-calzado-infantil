@@ -346,10 +346,9 @@ footer {
         background-color: inherit;
     }
     tr td :first-child{
-        background-color:rgb(221, 53, 90) ;
         font-weight: bold;
         font-size: 1.3em;
-        color: aliceblue;
+        color:rgb(221, 53, 90);
     }
     tbody td{
         display: block;

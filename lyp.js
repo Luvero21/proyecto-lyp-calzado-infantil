@@ -308,11 +308,6 @@ function obtenerPrecioTotal(array) {
 } );
 }
 
-const navbar = document.querySelectorAll('.nav-link');
-for (const nav of navbar) {
-    console.log('que pasa')
-  }
-
 
 imprimirProductosHTML(calzados2);
 carrito= chequearCarritoStorage();

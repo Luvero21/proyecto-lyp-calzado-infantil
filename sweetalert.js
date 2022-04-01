@@ -3,7 +3,7 @@ const btnn = document.querySelectorAll('.comprar');
 
  btnn.forEach(comprar=>{
    comprar.addEventListener('click',() =>{
-     Swal.fire({ title:"Elegiste Calzados LYP",background:'#EACD2E', text:" Gracias por tu preferirnos",})
+     Swal.fire({ title:"Elegiste Calzados LYP",background:'#EACD2E', text:" Gracias por preferirnos",})
    })
  });
 

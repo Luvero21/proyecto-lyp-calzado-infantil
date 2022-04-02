@@ -30,7 +30,7 @@ const calzados =[
         precio: 1500,
         cantidad:1,
         numero:26,
-        tipo:"zapatilla",
+        tipo:"Zapatilla",
         img:"./img/PhotoRoom-20220218_095456.png"
         
     },
@@ -40,7 +40,7 @@ const calzados =[
         precio: 1500,
         cantidad:1,
         numero:23,
-        tipo:"zapatilla",
+        tipo:"Zapatilla",
         img:"./img/PhotoRoom-20220218_095426.png"
         
     },
@@ -50,7 +50,7 @@ const calzados =[
         precio: 1500,
         cantidad:1,
         numero:21,
-        tipo:"zapatilla",
+        tipo:"Zapatilla",
         img:"./img/PhotoRoom-20220218_095357.png"
         
         
@@ -61,7 +61,7 @@ const calzados =[
         precio: 1500,
         cantidad:1,
         numero:23,
-        tipo:"zapatilla",
+        tipo:"Zapatilla",
         img:"./img/PhotoRoom-20220218_095319.png"
         
     },
@@ -239,7 +239,6 @@ function descripcionTabla (array){
                     <th scope="col">Imagen</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Color</th>
                     <th scope="col">Precio </th>
                     <th scope="col">Accion</th>
                 </tr>
@@ -248,7 +247,7 @@ function descripcionTabla (array){
         
             </tbody>
             <tr> 
-            <td> <button id="vaciarCarrito" class="btn btn-danger"> Vaciar Carrito </button> </td>
+            <td> <button id="vaciarCarrito" class="btn btn-danger text-light"> Vaciar Carrito </button> </td>
             </tr>
             <tr>
             <td class="text-center fs-3 fw-bold text-danger ">Total: $${precioTotal}</td>
@@ -270,7 +269,6 @@ for (let calzado2 of array){
                 <tr class="imag "><img src="${calzado2.img}" width="100"></td>
                 <td class"tipo">${calzado2.tipo}</td>
                 <td class"cant">${calzado2.cantidad}</td>
-                <td class="color">${calzado2.color}</td>
                 <td class="precio">$${calzado2.precio}</td>
                 <td class="elim"> <button id="eliminar${calzado2.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>
                 </tr>`;

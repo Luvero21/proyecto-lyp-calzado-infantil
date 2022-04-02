@@ -65,7 +65,7 @@ function consultarApi(ciudad,pais)  {
     actual.classList.add('text-center','text-light','mb-5','fs-3');
 
     const resultadoDiv = document.createElement('div');
-    resultadoDiv.classList.add('text-center','text-light','shadow-lg', 'p-2','mb-5',);
+    resultadoDiv.classList.add('text-center','text-light','shadow-lg', 'p-2','mb-5','clima');
     resultadoDiv.appendChild(actual);
 
     resultado.appendChild(resultadoDiv);

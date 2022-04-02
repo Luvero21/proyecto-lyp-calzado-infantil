@@ -308,36 +308,52 @@ footer {
 /************MEDIAS QUERIES*************/
 @media (max-width:425px){
     .text-img{ 
-        font-size: 30px;
+        font-size: 22px;
        text-align: center;
        justify-content: center;
        
     }
     .mapagoogle{
-        width: 280px;
+        width: 250px;
+        height: 200px;
         text-align: center;
         align-items: center;
     }
     .col{
-        width: 300px;
+        width: auto;
     }
     .card{
-        width:300px;
+        width: auto;
         font-size: 12px;
-    }
-    .container-fluid{
-        width: 300px;
     }
     .container{
         width:max-content;
     }
-    .redSocial{
-        width: 300px;
-    }
+    .clima{
+       padding: 0px;
+   }
+   .temperatura{
+       margin: 0px;
+   }
+   .numDire{
+       font-size: 12px;
+   }
+   .text-im{
+       font-size: 25px;
+   }
+   .logoLYP{
+       width: 100px;
+       height: 70px;
+   }
+   .visitanos{
+       padding: 0;
+       margin: 0;
+   }
 }
+
 @media (max-width:600px){
     table{
-        width: 100%;
+        width: 80%;
     }
     thead{
         display: none;
@@ -347,12 +363,14 @@ footer {
     }
     tr td :first-child{
         font-weight: bold;
-        font-size: 1.3em;
+        font-size: 10px;
         color:rgb(221, 53, 90);
     }
     tbody td{
-        display: block;
         text-align: center;
     }
-   
+    td{
+        padding:0px;
+        font-size: 10px;
+    }
 }

@@ -25,7 +25,6 @@ function mostrarError (mensaje){
     const alerta = document.querySelector()
     if (!alerta){
         const alerta = document.createElement('div');
-        alerta.classList.add;
         alerta.innerHTML= `<strong > ERROR!!!!!!</strong>
         <span>${mensaje}</span>` ;
         containerClima.appendChild(alerta);
@@ -62,7 +61,7 @@ function consultarApi(ciudad,pais)  {
 
     const actual = document.createElement('p');
     actual.innerHTML= `La temperatura es de ${centrigradoUnDecimal}℃;`;
-    actual.classList.add('text-center','text-light','mb-5','fs-3');
+    actual.classList.add('text-center','text-light','mb-5','fs-3','temperatura');
 
     const resultadoDiv = document.createElement('div');
     resultadoDiv.classList.add('text-center','text-light','shadow-lg', 'p-2','mb-5','clima');

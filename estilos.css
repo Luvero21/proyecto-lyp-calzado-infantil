@@ -348,7 +348,15 @@ footer {
    .visitanos{
        padding: 0;
        margin: 0;
+       
    }
+   .footer_dire{
+       display: none;
+   }
+   .footer_tex{
+       text-align: center;
+   }
+
 }
 
 @media (max-width:600px){

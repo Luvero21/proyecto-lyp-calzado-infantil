@@ -247,7 +247,7 @@ function descripcionTabla (array){
         
             </tbody>
             <tr> 
-            <td> <button id="vaciarCarrito" class="btn btn-danger text-light"> Vaciar Carrito </button> </td>
+            <td> <button id="vaciarCarrito" class="btn bg-warning text-danger fw-bold"> Vaciar Carrito </button> </td>
             </tr>
             <tr>
             <td class="text-center fs-3 fw-bold text-danger ">Total: $${precioTotal}</td>
@@ -270,7 +270,7 @@ for (let calzado2 of array){
                 <td class"tipo">${calzado2.tipo}</td>
                 <td class"cant">${calzado2.cantidad}</td>
                 <td class="precio">$${calzado2.precio}</td>
-                <td class="elim"> <button id="eliminar${calzado2.id}" type="button" class="btn btn-darger"> Eliminar </button> </td>
+                <td class="elim"> <button id="eliminar${calzado2.id}" type="button" class="btn bg-danger fw-bold text-light"> Eliminar </button> </td>
                 </tr>`;
                 bodyTabla.appendChild(item);
                 bodyTabla.classList.add( 'text-center','text-danger','fs-5');
